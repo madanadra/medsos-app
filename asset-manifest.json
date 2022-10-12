@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/medsos-app/static/css/main.d3b20426.css",
+    "main.js": "/medsos-app/static/js/main.81942f3d.js",
+    "static/media/i.svg": "/medsos-app/static/media/i.b506b707653c842d24d2fb466a865c54.svg",
+    "index.html": "/medsos-app/index.html",
+    "main.d3b20426.css.map": "/medsos-app/static/css/main.d3b20426.css.map",
+    "main.81942f3d.js.map": "/medsos-app/static/js/main.81942f3d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d3b20426.css",
+    "static/js/main.81942f3d.js"
+  ]
+}
