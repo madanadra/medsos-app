@@ -16,7 +16,7 @@ const HomePage = ({cookies}) => {
     useDocumentTitle('Home | Medsos')
 
     const loadHome = () => {
-        axios.get(`http://inmu-medsos-api.dgrande.com/api/home`, {headers: { Authorization: 'Bearer '+ cookies.user }})
+        axios.get(`https://inmu-medsos-api.dgrande.com/api/home`, {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
             setHome(response.data);
             console.log(response);
@@ -27,7 +27,7 @@ const HomePage = ({cookies}) => {
       }
 
       const checkLike = () => {
-        axios.get(`http://inmu-medsos-api.dgrande.com/api/check-like`, {headers: { Authorization: 'Bearer '+ cookies.user }})
+        axios.get(`https://inmu-medsos-api.dgrande.com/api/check-like`, {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
             setLikes(response.data.check);
             console.log(response);
@@ -38,7 +38,7 @@ const HomePage = ({cookies}) => {
     }
 
     const like = async (like_id) => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/like',
+        axios.post('https://inmu-medsos-api.dgrande.com/api/like',
         {target: like_id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
@@ -51,7 +51,7 @@ const HomePage = ({cookies}) => {
     }
 
     const unlike = async (like_id) => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/unlike',
+        axios.post('https://inmu-medsos-api.dgrande.com/api/unlike',
         {target: like_id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {

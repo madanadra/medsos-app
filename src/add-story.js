@@ -13,7 +13,7 @@ const AddStoryPage = ({cookies}) => {
 
     const handleStory = () => {
         setLoad(true);
-        axios.post('http://inmu-medsos-api.dgrande.com/api/create-story', 
+        axios.post('https://inmu-medsos-api.dgrande.com/api/create-story', 
         {text: text}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {

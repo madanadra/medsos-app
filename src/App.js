@@ -1,7 +1,7 @@
 import { AppBar, IconButton, Toolbar, ThemeProvider, createTheme, Typography, Container } from "@mui/material";
 import { ArrowBack, Search, AddBoxOutlined } from "@mui/icons-material";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import LoginPage from "./login";
@@ -50,7 +50,7 @@ function App() {
 
   useEffect(() => {
     if (cookies.user) {
-      axios.get('http://inmu-medsos-api.dgrande.com/api/user', {headers: { Authorization: 'Bearer '+ cookies.user }})
+      axios.get('https://inmu-medsos-api.dgrande.com/api/user', {headers: { Authorization: 'Bearer '+ cookies.user }})
       .then((response) => {
         console.log('Berhasil masuk');
       })
@@ -64,7 +64,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter>
         <Container maxWidth="md" disableGutters sx={{ p: 0, minHeight: '100vh' }}>
           <Routes>
             <Route path="/masuk" element={cookies.user ? <Navigate to={'/'} /> : <LoginPage setCookie={setCookie} />} />
@@ -75,7 +75,7 @@ function App() {
             <Route path="/cari" element={cookies.user ? <SearchPage cookies={cookies} /> : <Navigate to={'/masuk'} />} />
           </Routes>
         </Container>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }

@@ -11,7 +11,7 @@ const SearchPage = ({cookies}) => {
     useDocumentTitle('Cari | Medsos')
 
     const loadSearch = (evt) => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/search',
+        axios.post('https://inmu-medsos-api.dgrande.com/api/search',
         {search: evt}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {

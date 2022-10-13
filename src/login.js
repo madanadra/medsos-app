@@ -16,7 +16,7 @@ const LoginPage = ({setCookie}) => {
 
     const handleLogin = () => {
         setLoad(true);
-        axios.post('http://inmu-medsos-api.dgrande.com/api/login', {email: email, password: password})
+        axios.post('https://inmu-medsos-api.dgrande.com/api/login', {email: email, password: password})
         .then((response) => {
             setCookie('user', response.data.access_token, { path: '/', expires: new Date(Date.now()+2592000) });
             console.log(response);

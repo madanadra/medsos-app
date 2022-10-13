@@ -24,7 +24,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     useDocumentTitle(`${data?.profile?.name ? data.profile.name : 'Profil'} | Medsos`)
 
     const loadProfile = () => {
-        axios.get(`http://inmu-medsos-api.dgrande.com/api/profile/${id}`, {headers: { Authorization: 'Bearer '+ cookies.user }})
+        axios.get(`https://inmu-medsos-api.dgrande.com/api/profile/${id}`, {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
             setData(response.data);
             setLoad(false);
@@ -39,7 +39,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     const handleUpdateImage = (event) => {
         const img = new FormData();
         img.append('image', event.target.files[0]);
-        axios.post(`http://inmu-medsos-api.dgrande.com/api/update-image`, 
+        axios.post(`https://inmu-medsos-api.dgrande.com/api/update-image`, 
         img, {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
             loadProfile();
@@ -53,7 +53,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     const handleUpdateProfile = () => {
         if (name.current.value) {
             setDialogOpen(false);
-            axios.patch(`http://inmu-medsos-api.dgrande.com/api/update-profile`, 
+            axios.patch(`https://inmu-medsos-api.dgrande.com/api/update-profile`, 
             {name: name.current.value, description: description.current.value}, 
             {headers: { Authorization: 'Bearer '+ cookies.user }})
             .then((response) => {
@@ -68,7 +68,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     }
 
     const handleLogout = () => {
-        axios.get('http://inmu-medsos-api.dgrande.com/api/logout', {headers: { Authorization: 'Bearer '+ cookies.user }})
+        axios.get('https://inmu-medsos-api.dgrande.com/api/logout', {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
             removeCookie('user', { path: '/' });
             setDialogOpen(false);
@@ -80,7 +80,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     }
 
     const checkFollow = () => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/check-follow', 
+        axios.post('https://inmu-medsos-api.dgrande.com/api/check-follow', 
         {target: id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
@@ -93,7 +93,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     }
 
     const follow = () => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/follow', 
+        axios.post('https://inmu-medsos-api.dgrande.com/api/follow', 
         {target: id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
@@ -106,7 +106,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
 
     const unfollow = () => {
         setDialogOpen(false);
-        axios.post('http://inmu-medsos-api.dgrande.com/api/unfollow',
+        axios.post('https://inmu-medsos-api.dgrande.com/api/unfollow',
         {target: id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
@@ -118,7 +118,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     }
 
     const checkLike = () => {
-        axios.get(`http://inmu-medsos-api.dgrande.com/api/check-like`, {headers: { Authorization: 'Bearer '+ cookies.user }})
+        axios.get(`https://inmu-medsos-api.dgrande.com/api/check-like`, {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
             setLikes(response.data.check);
             console.log(response);
@@ -129,7 +129,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     }
 
     const like = async (like_id) => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/like',
+        axios.post('https://inmu-medsos-api.dgrande.com/api/like',
         {target: like_id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
@@ -142,7 +142,7 @@ const ProfilePage = ({cookies, removeCookie}) => {
     }
 
     const unlike = async (like_id) => {
-        axios.post('http://inmu-medsos-api.dgrande.com/api/unlike',
+        axios.post('https://inmu-medsos-api.dgrande.com/api/unlike',
         {target: like_id}, 
         {headers: { Authorization: 'Bearer '+ cookies.user }})
         .then((response) => {
